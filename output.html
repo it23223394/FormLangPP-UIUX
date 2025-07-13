@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PoetrySubmission</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+.form-container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+fieldset { margin: 20px 0; padding: 20px; border: 2px solid #ddd; border-radius: 8px; }
+legend { font-weight: bold; font-size: 1.3em; color: #333; padding: 0 10px; }
+label { display: block; margin: 12px 0; font-weight: 500; }
+input, textarea, select { margin: 5px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+input[type='submit'] { background-color: #007bff; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+input[type='submit']:hover { background-color: #0056b3; }
+.radio-group, .checkbox-group { margin: 10px 0; }
+.radio-group input, .checkbox-group input { margin-right: 8px; }
+.error { color: red; font-size: 0.9em; margin-top: 5px; }
+</style>
+<script>
+function validateForm() {
+  var age = document.forms['PoetrySubmission']['age'].value;
+  if (age < 13) {
+    alert('Contestants must be at least 13 years old to participate.');
+    return false;
+  }
+  if (age > 99) {
+    alert('Invalid age provided.');
+    return false;
+  }
+  return true;
+}
+</script>
+</head>
+<body>
+<div class='form-container'>
+<form name="PoetrySubmission" method="post" onsubmit="return validateForm()">
+<h1>PoetrySubmission</h1>
+<!-- Meta: author = Poetry Contest Committee -->
+<fieldset>
+<legend>ContestantDetails</legend>
+<label>contestantName: <input type="text" name="contestantName" required></label><br>
+<label>emailAddress: <input type="email" name="emailAddress" required></label><br>
+<label>age: <input type="number" name="age" min="13" max="99" required></label><br>
+<label>birthDate: <input type="date" name="birthDate" required></label><br>
+<label>phone: <input type="text" name="phone" ></label><br>
+<label>userPassword: <input type="password" name="userPassword" required></label><br>
+</fieldset>
+<fieldset>
+<legend>PoetrySubmission</legend>
+<label>poemTitle: <input type="text" name="poemTitle" required></label><br>
+<label>poemContent:<br><textarea name="poemContent" rows="15" cols="60" required></textarea></label><br>
+<label>category:</label><br>
+<div class='radio-group'>
+<label><input type="radio" name="category" value="Sonnet" required> Sonnet</label><br>
+<label><input type="radio" name="category" value="Haiku" required> Haiku</label><br>
+<label><input type="radio" name="category" value="Free Verse" required> Free Verse</label><br>
+<label><input type="radio" name="category" value="Limerick" required> Limerick</label><br>
+<label><input type="radio" name="category" value="Epic" required> Epic</label><br>
+</div>
+<div class='checkbox-group'><label><input type="checkbox" name="previouslyPublished" > previouslyPublished</label></div>
+<label>language: <select name="language" required >
+<option value="English">English</option>
+<option value="Spanish">Spanish</option>
+<option value="French">French</option>
+<option value="German">German</option>
+<option value="Other">Other</option>
+</select></label><br>
+<label>manuscriptFile: <input type="file" name="manuscriptFile" accept=".pdf,.doc,.docx" required></label><br>
+</fieldset>
+<fieldset>
+<legend>ContactPreferences</legend>
+<label>preferredContact:</label><br>
+<div class='radio-group'>
+<label><input type="radio" name="preferredContact" value="Email" required> Email</label><br>
+<label><input type="radio" name="preferredContact" value="Phone" required> Phone</label><br>
+<label><input type="radio" name="preferredContact" value="Mail" required> Mail</label><br>
+</div>
+<div class='checkbox-group'><label><input type="checkbox" name="newsletter" checked> newsletter</label></div>
+<label>emergencyContact: <input type="text" name="emergencyContact" ></label><br>
+<label>specialRequests:<br><textarea name="specialRequests" rows="3" cols="40"></textarea></label><br>
+</fieldset>
+<!-- Validation: Contestants must be at least 13 years old to participate. -->
+<!-- Validation: Invalid age provided. -->
+<input type="submit" value="Submit Form">
+</form>
+</div>
+</body>
+</html>

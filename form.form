@@ -1,0 +1,37 @@
+form PoetrySubmission {
+    meta author = "Poetry Contest Committee";
+    
+    section ContestantDetails {
+        field contestantName: text required;
+        field emailAddress: email required;
+        field age: number min=13 max=99 required;
+        field birthDate: date required;
+        field phone: text;
+        field userPassword: password required;
+    }
+    
+    section PoetrySubmission {
+        field poemTitle: text required;
+        field poemContent: textarea rows=15 cols=60 required;
+        field category: radio required options=["Sonnet", "Haiku", "Free Verse", "Limerick", "Epic"];
+        field previouslyPublished: checkbox default=false;
+        field language: dropdown required options=["English", "Spanish", "French", "German", "Other"];
+        field manuscriptFile: file accept=".pdf,.doc,.docx" required;
+    }
+    
+    section ContactPreferences {
+        field preferredContact: radio required options=["Email", "Phone", "Mail"];
+        field newsletter: checkbox default=true;
+        field emergencyContact: text;
+        field specialRequests: textarea rows=3 cols=40;
+    }
+    
+    validate {
+        if (age < 13) {
+            error "Contestants must be at least 13 years old to participate.";
+        }
+        if (age > 99) {
+            error "Invalid age provided.";
+        }
+    }
+}

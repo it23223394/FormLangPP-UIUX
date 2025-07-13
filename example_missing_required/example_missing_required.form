@@ -1,0 +1,12 @@
+form ErrorTest {
+    section MissingRequired {
+        field email: email;
+        field poem: textarea;
+    }
+    
+    validate {
+        if (age < 18) {
+            error "Too young.";
+        }
+    }
+}

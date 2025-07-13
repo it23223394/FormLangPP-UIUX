@@ -1,0 +1,12 @@
+form AgeGate {
+    section Info {
+        field username: text required;
+        field age: number required min=12 max=120;
+    }
+
+    validate {
+        if (age < 18) {
+            error "You must be 18+.";
+        }
+    }
+}

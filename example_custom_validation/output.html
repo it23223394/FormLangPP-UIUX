@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AgeGate</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+.form-container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+fieldset { margin: 20px 0; padding: 20px; border: 2px solid #ddd; border-radius: 8px; }
+legend { font-weight: bold; font-size: 1.3em; color: #333; padding: 0 10px; }
+label { display: block; margin: 12px 0; font-weight: 500; }
+input, textarea, select { margin: 5px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+input[type='submit'] { background-color: #007bff; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+input[type='submit']:hover { background-color: #0056b3; }
+.radio-group, .checkbox-group { margin: 10px 0; }
+.radio-group input, .checkbox-group input { margin-right: 8px; }
+.error { color: red; font-size: 0.9em; margin-top: 5px; }
+</style>
+<script>
+function validateForm() {
+  var age = document.forms['AgeGate']['age'].value;
+  if (age < 13) {
+    alert('Contestants must be at least 13 years old to participate.');
+    return false;
+  }
+  if (age > 99) {
+    alert('Invalid age provided.');
+    return false;
+  }
+  return true;
+}
+</script>
+</head>
+<body>
+<div class='form-container'>
+<form name="AgeGate" method="post" onsubmit="return validateForm()">
+<h1>AgeGate</h1>
+<fieldset>
+<legend>Info</legend>
+<label>username: <input type="text" name="username" required></label><br>
+<label>age: <input type="number" name="age" required min="12" max="120"></label><br>
+</fieldset>
+<!-- Validation: You must be 18+. -->
+<input type="submit" value="Submit Form">
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+form MinimalEntry {
+    section Basic {
+        field name: text;
+        field age: number;
+    }
+}
